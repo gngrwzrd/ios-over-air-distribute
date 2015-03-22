@@ -1,0 +1,32 @@
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>PayloadContent</key>
+        <dict>
+            <key>URL</key>
+            <string>http://gngrwzrd.com/apps/com.talesuntold.TalesUntold/retrieve.php</string>
+            <key>DeviceAttributes</key>
+            <array>
+                <string>IMEI</string>
+                <string>UDID</string>
+                <string>PRODUCT</string>
+                <string>VERSION</string>
+                <string>SERIAL</string>
+            </array>
+        </dict>
+        <key>PayloadOrganization</key>
+        <string>com.gngrwzrd</string>
+        <key>PayloadDisplayName</key>
+        <string>Get Your UDID</string>
+        <key>PayloadVersion</key>
+        <integer>1</integer>
+        <key>PayloadUUID</key>
+        <string>A395BF3C-13B3-4B89-88D0-1F82ADA0EBD1</string>
+        <key>PayloadIdentifier</key>
+        <string>com.gngrwzrd.profile-service</string>
+        <key>PayloadDescription</key>
+        <string>This temporary profile will be used to find and display your current device's UDID.</string>
+        <key>PayloadType</key>
+        <string>Profile Service</string>
+    </dict>
+</plist>
