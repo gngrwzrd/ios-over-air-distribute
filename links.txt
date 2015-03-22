@@ -1,4 +1,5 @@
 http://www.rootmanager.com/iphone-ota-configuration/iphone-ota-setup-with-signed-mobileconfig.html
+http://www.teratotech.com/blog/hhb-ios-tips-send-enterprise-app-distribution/
 http://www.joshwright.com/tips/Getting-an-iPhone-UDID-from-Mobile-Safari
 http://stackoverflow.com/questions/4973244/how-does-testflight-do-it
 https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/iPhoneOTAConfiguration/iPhoneOTAConfiguration.pdf
@@ -6,3 +7,4 @@ http://stackoverflow.com/questions/1968323/get-iphone-id-in-web-app
 http://stackoverflow.com/questions/20276907/enterprise-app-deployment-doesnt-work-on-ios-7-1
 http://gknops.github.io/adHocGenerate/
 https://discussions.apple.com/thread/3089948?start=0&tstart=0
+http://stackoverflow.com/questions/25929465/ios-over-the-air-distribution-with-ios8-ios-7-is-working-fine
