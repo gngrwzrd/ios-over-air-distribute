@@ -16,7 +16,7 @@ It generates and creates:
 1. html/php/mobileconfig to obtain a user's UDID from mobile Safari.
 2. html/plist for users to install the app.
 
-**Apple requires HTTPS for IPA installation over the air. You will need it!**
+**Apple requires HTTPS (trusted ssl, not self signed) for IPA installation over the air. You will need it!**
 
 ## ADHOC ##
 
@@ -91,7 +91,7 @@ Example generating files for Adhoc Step 1 with signed mobileprofile:
 
 With enterprise certificates and provisions you don't need to obtain user's device UDIDs. You can instead  skip to generating the install files.
 
-**Apple requires HTTPS for IPA installation over the air. You will need it!**
+**Apple requires HTTPS (trusted ssl, not self signed) for IPA installation over the air. You will need it!**
 
 Enterprise requires only 3 steps:
 
@@ -112,3 +112,12 @@ Example generating the install files for step 2.
 
 This script will also keep installation files for each version of your IPA. Name your IPA with the version number in it (MyApp-1.0.1.ipa) so it doesn't get overwritten the next time you generate files.
 
+## Extra Information ##
+
+The profile delivery system is very picky. If you attempt to change anything in this script such as moving files into different directories, I can't guarantee it'll work.
+
+Over the air IPA installation is also very picky. I recommend the baseurl be as short as possible, try to eliminate special characters. Generally I'd try and stick to a-Z,0-9,-_/.
+
+## Common Errors ##
+
+Can't connect to mysite.com - this is most likely because your server doesn't have HTTPS, or have trusted SSL certificate.
