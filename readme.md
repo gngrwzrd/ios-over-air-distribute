@@ -56,7 +56,7 @@ This script will also keep installation files for each version of your IPA. Name
 
 ## ENTERPRISE ##
 
-With enterprise certificates and provisions you don't need to obtain user's device UDIDs. You can instaed  skip to generating the install files.
+With enterprise certificates and provisions you don't need to obtain user's device UDIDs. You can instead  skip to generating the install files.
 
 Enterprise requires only 3 steps:
 
