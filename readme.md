@@ -5,6 +5,9 @@ A python command to generate files for over the air adhoc distribution and enter
 Device Registration Sample:
 http://gngrwzrd.com/apps/MyApp
 
+Devices txt sample:
+http://gngrwzrd.com/apps/MyApp/devices.txt
+
 Installation Sample:
 http://gngrwzrd.com/apps/MyApp/install.html
 
