@@ -52,7 +52,7 @@ Example generating the install files for step 6:
 	--baseurl=http://mywebsite.com/apps/MyApp \
 	--destination=/Users/aaronsmith/Desktop/MyApp \
 
-This script will also keep installation files for each version of your IPA. Name your IPA with the version number in - MyApp-1.0.1.ipa.
+This script will also keep installation files for each version of your IPA. Name your IPA with the version number in it (MyApp-1.0.1.ipa) so it doesn't get overwritten the next time you generate files.
 
 ## ENTERPRISE ##
 
@@ -73,4 +73,4 @@ Enterprise requires only 3 steps:
 	--baseurl=http://mywebsite.com/apps/MyApp \
 	--destination=/Users/aaronsmith/Desktop/MyApp
 
-This script will also keep installation files for each version of your IPA. Name your IPA with the version number in - MyApp-1.0.1.ipa.
+This script will also keep installation files for each version of your IPA. Name your IPA with the version number in it (MyApp-1.0.1.ipa) so it doesn't get overwritten the next time you generate files.
