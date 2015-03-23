@@ -72,7 +72,7 @@ Example generating files for Adhoc Step 1 with signed mobileprofile:
 	--destination=/Users/aaronsmith/Desktop/MyApp \
 	-s \
 	--sslcrt=server.crt \
-	--sslkey=servert.key \
+	--sslkey=server.key \
 	--sslchain=cert_chain.crt
 
 ## ENTERPRISE ##
