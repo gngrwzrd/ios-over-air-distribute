@@ -84,6 +84,6 @@ $raw = fopen("raw-device.txt","w");
 fwrite($raw,$data);
 fclose($raw);
 
-header("Location: {{baseurl}}/{{bundleid}}/registered");
+header("Location: {{baseurl}}/registered");
 
 ?>

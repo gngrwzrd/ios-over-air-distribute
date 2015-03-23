@@ -2,8 +2,34 @@
 <head>
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable = no" >
 <title>Install {{appname}}</title>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<style>
+body {font-family:sans-serif;padding-top:20px;}
+a {font-size:24px;}
+.icon{border-radius:30px;}
+.appname {
+	font-size:10px;
+	color:gray;
+	display:block;
+	margin-top:8px;
+}
+.desktop {color:red;font-size:24px;}
+.mobile {display:none;}
+</style>
 </head>
 <body>
-<a href="itms-services://?action=download-manifest&amp;url={{encoded_baseurl}}%2F{{encoded_bundleid}}%2F{{encoded_ipaname}}.plist">Tap to install {{appname}}</a>
+<center>
+<div class="desktop">
+<img class="icon" src="{{iconname}}" /><br/>
+<small class="appname">{{appname}}</small><br/>
+Open this website on your iOS device.
+</div>
+<div class="mobile">
+<a href="itms-services://?action=download-manifest&amp;url={{encoded_baseurl}}%2F{{encoded_ipaname}}.plist"><img class="icon" src="{{iconname}}" /></a><br/>
+<small class="appname">{{appname}}</small><br/>
+<a href="itms-services://?action=download-manifest&amp;url={{encoded_baseurl}}%2F{{encoded_ipaname}}.plist">Tap to Install</a>
+</div>
+</center>
 </body>
 </html>

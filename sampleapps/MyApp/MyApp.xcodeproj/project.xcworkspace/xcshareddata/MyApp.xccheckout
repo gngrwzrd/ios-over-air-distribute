@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5E410AC7-44A9-4477-BF8A-D132CE110A33</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MyApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F96D6B2B1DB786E735C426A71CC0ED8016C3C515</key>
+		<string>github.com:gngrwzrd/ios-over-air-distribute.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>sampleapps/MyApp/MyApp.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F96D6B2B1DB786E735C426A71CC0ED8016C3C515</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:gngrwzrd/ios-over-air-distribute.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F96D6B2B1DB786E735C426A71CC0ED8016C3C515</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F96D6B2B1DB786E735C426A71CC0ED8016C3C515</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ios-over-air-distribute</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -4,13 +4,14 @@ parser = argparse.ArgumentParser(description="Template file generator for iOS ov
 parser.add_argument("-n","--newapp",action="store_true",help="Make a new app directory with all profile templates prepared.")
 parser.add_argument("-r","--release",action="store_true",help="Release a new IPA, making a new directory in an existing application directory.")
 parser.add_argument("-e","--enterprise",action="store_true",help="The app being released is signed with enterprise certs and provisions.")
+parser.add_argument("-d","--destination",help="(Optional) Destination directory where to create all files.")
 parser.add_argument("--appname",help="The application name, ex: Tales Untold, DOcumentr, etc.")
 parser.add_argument("--organization",help="An organization identifier, ex: com.apptitude, com.gngrwzrd, com.pixelrevision, etc.")
 parser.add_argument("--bundleid",help="THe application's bundle id. ex: com.talesuntold.TalesUntold")
-parser.add_argument("--version",help="The application's CFBundleShortStringVersion value.")
-parser.add_argument("--bundleversion",help="The application's CFBundleVersion value.")
+parser.add_argument("--version",help="The application's CFBundleShortVersionString value.")
 parser.add_argument("--baseurl",help="The base HTTP URL where files will be uploaded to.")
 parser.add_argument("--ipa",help="The IPA file to release.")
+parser.add_argument("--icon",help="An icon to display in generated templates.")
 
 """
 ** Adhoc and Enterprise Distribution with Safari requires HTTPS. **
@@ -36,7 +37,7 @@ Add those devices to your ad hoc distribution provision.
 
 Step 5:
 Archive and distribute a build for ad hoc from Xcode, them release it with distribute.py:
-python distribute.py -r --baseurl="http://l.gngrwzrd.com/apps" --ipa=TalesUntold-1.0.18.ipa --bundleid=com.talesuntold.TalesUntold --version=1.0 --bundleversion=18
+python distribute.py -r --baseurl="http://l.gngrwzrd.com/apps" --ipa=TalesUntold-1.0.18.ipa --bundleid=com.talesuntold.TalesUntold --version=1.0
 
 Step 6:
 Email users this link:
@@ -48,7 +49,7 @@ For Enterprise Distribution, these are generally the steps:
 
 Step 1:
 Archive and distribute for enterprise in Xcode. Then create the required files with distribute.py
-python distribute.py -r --ipa=TalesUntold-1.0.18.ipa --bundleid="com.talesuntold.TalesUntoldEnter" --baseurl="http://l.gngrwzrd.com/apps" --version=1.0 --bundleversion=18
+python distribute.py -r --ipa=TalesUntold-1.0.18.ipa --bundleid="com.talesuntold.TalesUntoldEnter" --baseurl="http://l.gngrwzrd.com/apps" --version=1.0
 
 Step 3:
 Email users this link:
@@ -60,28 +61,36 @@ args = parser.parse_args()
 if args.ipa:
 	ipaname = args.ipa
 	pieces = args.ipa.split("/")
-	if len(pieces) > 0: ipa = pieces[0]
+	if len(pieces) > 0: ipa = pieces[-1]
 	ipaname = re.sub(".ipa","",ipa)
 	args.ipaname = ipaname
-	print "ipaname:" + ipaname
+
+if getattr(args,"icon",None):
+	iconname = args.icon
+	pieces = args.icon.split("/")
+	if len(pieces) > 0: iconname = pieces[-1]
+	args.iconname = iconname
+
+if not getattr(args,"destination",False):
+	if getattr(args,"bundleid",None):
+		args.destination = args.bundleid
 
 def replace_args(args,others,content,outfile,urlencode=False):
-	if args.appname: content = re.sub("{{appname}}",args.appname,content)
-	if args.baseurl: content = re.sub("{{baseurl}}",args.baseurl,content)
-	if args.bundleid: content = re.sub("{{bundleid}}",args.bundleid,content)
-	if args.organization: content = re.sub("{{organization}}",args.organization,content)
-	if args.version: content = re.sub("{{version}}",args.version,content)
-	if args.bundleversion: content = re.sub("{{bundleversion}}",args.bundleversion,content)
-	if args.ipa: content = re.sub("{{ipa}}",args.ipa,content)
-	#if args.ipaname: content = re.sub("{{ipaname}}",args.ipaname,content)
-	if urlencode and args.appname: content = re.sub("{{encoded_appname}}",urllib.quote_plus(args.appname,''),content)
-	if urlencode and  args.baseurl: content = re.sub("{{encoded_baseurl}}",urllib.quote_plus(args.baseurl,''),content)
-	if urlencode and args.bundleid: content = re.sub("{{encoded_bundleid}}",urllib.quote_plus(args.bundleid,''),content)
-	if urlencode and args.organization: content = re.sub("{{encoded_organization}}",urllib.quote_plus(args.organization,''),content)
-	if urlencode and args.version: content = re.sub("{{encoded_version}}",urllib.quote_plus(args.version,''),content)
-	if urlencode and args.bundleversion: content = re.sub("{{encoded_bundleversion}}",urllib.quote_plus(args.bundleversion,''),content)
-	if urlencode and args.ipa: content = re.sub("{{encoded_ipa}}",urllib.quote_plus(args.ipa,''),content)
-	if urlencode and args.ipaname: content = re.sub("{{encoded_ipaname}}",urllib.quote_plus(args.ipaname,''),content)
+	if getattr(args,"appname",None): content = re.sub("{{appname}}",args.appname,content)
+	if getattr(args,"baseurl",None): content = re.sub("{{baseurl}}",args.baseurl,content)
+	if getattr(args,"bundleid",None): content = re.sub("{{bundleid}}",args.bundleid,content)
+	if getattr(args,"organization",None): content = re.sub("{{organization}}",args.organization,content)
+	if getattr(args,"version",None): content = re.sub("{{version}}",args.version,content)
+	if getattr(args,"ipa",None): content = re.sub("{{ipa}}",args.ipa,content)
+	if getattr(args,"ipaname",None): content = re.sub("{{ipaname}}",args.ipaname,content)
+	if getattr(args,"iconname",None): content = re.sub("{{iconname}}",args.iconname,content)
+	if urlencode and getattr(args,"appname",None): content = re.sub("{{encoded_appname}}",urllib.quote_plus(args.appname,''),content)
+	if urlencode and getattr(args,"baseurl",None): content = re.sub("{{encoded_baseurl}}",urllib.quote_plus(args.baseurl,''),content)
+	if urlencode and getattr(args,"bundleid",None): content = re.sub("{{encoded_bundleid}}",urllib.quote_plus(args.bundleid,''),content)
+	if urlencode and getattr(args,"organization",None): content = re.sub("{{encoded_organization}}",urllib.quote_plus(args.organization,''),content)
+	if urlencode and getattr(args,"version",None): content = re.sub("{{encoded_version}}",urllib.quote_plus(args.version,''),content)
+	if urlencode and getattr(args,"ipa",None): content = re.sub("{{encoded_ipa}}",urllib.quote_plus(args.ipa,''),content)
+	if urlencode and getattr(args,"ipaname",None): content = re.sub("{{encoded_ipaname}}",urllib.quote_plus(args.ipaname,''),content)
 	for key in others: content = re.sub("{{"+key+"}}",others[key],content)
 	outfile.write(content)
 	outfile.close()
@@ -89,27 +98,27 @@ def replace_args(args,others,content,outfile,urlencode=False):
 def write_mobileconfig(args):
 	replace_args(args,{},
 		open("templates/template.mobileconfig","r").read(),
-		open(args.bundleid+"/profile.mobileconfig","w")
+		open(args.destination+"/profile.mobileconfig","w")
 	)
 
 def write_index(args):
 	replace_args(args,{},
 		open("templates/template.index.html","r").read(),
-		open(args.bundleid+"/index.html","w")
+		open(args.destination+"/index.html","w")
 	)
 
 def write_registered(args):
-	try: os.mkdir("%s/registered" % (args.bundleid))
+	try: os.mkdir("%s/registered" % (args.destination))
 	except: pass
 	replace_args(args,{},
 		open("templates/template.registered.html","r").read(),
-		open(args.bundleid+"/registered/index.html","w")
+		open(args.destination+"/registered/index.html","w")
 	)
 
 def write_retrieve(args):
 	replace_args(args,{},
 		open("templates/template.retrieve.php","r").read(),
-		open(args.bundleid+"/retrieve.php","w")
+		open(args.destination+"/retrieve.php","w")
 	)
 
 def secure_baseurl(baseurl):
@@ -119,9 +128,18 @@ def secure_baseurl(baseurl):
 		baseurl = "https" + baseurl
 	return baseurl
 
-def write_default_install(args):
+def write_install(args):
 	args.baseurl = secure_baseurl(args.baseurl)
-	dest = args.bundleid + "/" + args.ipaname + ".html"
+	dest = args.destination + "/" + "install.html"
+	replace_args(args,{},
+		open("templates/template.install.html","r").read(),
+		open(dest,"w"),
+		True
+	)
+
+def write_ipa_install(args):
+	args.baseurl = secure_baseurl(args.baseurl)
+	dest = args.destination + "/" + args.ipaname + ".html"
 	replace_args(args,{},
 		open("templates/template.install.html","r").read(),
 		open(dest,"w"),
@@ -130,29 +148,42 @@ def write_default_install(args):
 
 def write_app_plist(args):
 	args.baseurl = secure_baseurl(args.baseurl)
-	dest = args.bundleid + "/" + args.ipaname + ".plist"
+	dest = args.destination + "/" + args.ipaname + ".plist"
 	replace_args(args,{},
 		open("templates/template.app.plist","r").read(),
 		open(dest,"w")
 	)
 
 def copy_ipa(args):
-	shutil.copyfile(args.ipa, "%s/%s" % (args.bundleid,args.ipaname+".ipa"))
+	shutil.copyfile(args.ipa, "%s/%s" % (args.destination,args.ipaname+".ipa"))
+
+def copy_icon(args):
+	if getattr(args,"iconname",None):
+		shutil.copyfile(args.icon,"%s/%s"%(args.destination,args.iconname))
+
+def copy_js(args):
+	shutil.copyfile("scripts/main.js","%s/main.js"%(args.destination))
+	shutil.copyfile("scripts/jquery-1.8.3.min.js","%s/jquery.min.js"%(args.destination))
 
 def newapp(args):
-	try: os.mkdir(args.bundleid)
+	try: os.mkdir(args.destination)
 	except: pass
 	write_mobileconfig(args)
 	write_index(args)
 	write_registered(args)
 	write_retrieve(args)
+	copy_icon(args)
+	copy_js(args)
 
 def release(args):
-	try: os.mkdir(args.bundleid)
+	try: os.mkdir(args.destination)
 	except: pass
 	if not args.enterprise: write_app_plist(args)
-	write_default_install(args)
+	write_ipa_install(args)
+	write_install(args)
 	copy_ipa(args)
+	copy_icon(args)
+	copy_js(args)
 
 if args.newapp:
 	if not args.appname or not args.organization or not args.bundleid or not args.baseurl:
@@ -161,7 +192,7 @@ if args.newapp:
 		newapp(args)
 
 if args.release:
-	if not args.baseurl or not args.bundleid or not args.version or not args.bundleversion or not args.ipa:
-		print "Release app requires at least baseurl, bundleid, version, bundleversion, and ipa parameters"
+	if not args.appname or not args.baseurl or not args.bundleid or not args.version or not args.ipa:
+		print "Release app requires at least appname, baseurl, bundleid, version, and ipa parameters"
 	else:
 		release(args)

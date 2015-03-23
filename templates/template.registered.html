@@ -2,8 +2,28 @@
 <head>
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable = no" >
 <title>Device Registered</title>
+<style>
+body {font-family:sans-serif;padding-top:20px;}
+.icon{border-radius:30px;}
+.appname {
+	font-size:10px;
+	color:gray;
+	display:block;
+	margin-top:8px;
+}
+.success {
+	font-size:24px;
+	margin-top:8px;
+	display:block;
+}
+</style>
 </head>
 <body>
-Success! You've registered for {{appname}}. You'll have access to the next version we release.
+<center>
+<img class="icon" src="../{{iconname}}" /><br/>
+<small class="appname">{{appname}}</small><br/>
+<span class="success">Success!</span>
+<small>You will be sent another email with installation instructions.</small>
+</center>
 </body>
 </html>

@@ -2,8 +2,34 @@
 <head>
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable = no" >
 <title>Register Your Device</title>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<style>
+body {font-family:sans-serif;padding-top:20px;}
+a {font-size:24px;}
+.icon{border-radius:30px;}
+.appname {
+	font-size:10px;
+	color:gray;
+	display:block;
+	margin-top:8px;
+}
+.desktop {color:red;font-size:24px;}
+.mobile {display:none;}
+</style>
 </head>
 <body>
-Thanks for trying {{appname}}. <a href="{{baseurl}}/{{bundleid}}/profile.mobileconfig">Tap here to register your device</a>
+<center>
+<div class="desktop">
+<img class="icon" src="{{iconname}}" /><br/>
+<small class="appname">{{appname}}</small><br/>
+Open this website on your iOS device.
+</div>
+<div class="mobile">
+<a href="{{baseurl}}/profile.mobileconfig"><img class="icon" src="{{iconname}}" /></a><br/>
+<small class="appname">{{appname}}</small><br/>
+<a href="{{baseurl}}/profile.mobileconfig">Tap to register your device</a>
+</div>
+</center>
 </body>
 </html>

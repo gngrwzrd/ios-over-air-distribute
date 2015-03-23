@@ -4,7 +4,7 @@
         <key>PayloadContent</key>
         <dict>
             <key>URL</key>
-            <string>{{baseurl}}/{{bundleid}}/retrieve.php</string>
+            <string>{{baseurl}}/retrieve.php</string>
             <key>DeviceAttributes</key>
             <array>
                 <string>IMEI</string>
