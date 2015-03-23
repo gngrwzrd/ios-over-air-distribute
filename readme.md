@@ -61,7 +61,7 @@ With enterprise certificates and provisions you don't need to obtain user's devi
 Enterprise requires only 3 steps:
 
 1. In Xcode, archive and export for Enterprise Distribution. Save the IPA for step 2.
-2. Generate the installation files:
+2. Generate the installation files.
 3. Upload generated files to your server.
 
 	python distribute.py -r -e \
