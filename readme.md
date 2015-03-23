@@ -26,7 +26,13 @@ After users have registered their devices, use the "devices.txt" file written to
 
 Example generating the install files for step 2:
 
-	python distribute.py -r --appname=MyApp --bundleid=com.myapp.MyAwesomeApp --version=1.0 --ipa=MyAppIPA-1.0.1.ipa --icon=MyIcon.png --baseurl=http://mywebsite.com/apps/MyApp --destination=/Users/aaronsmith/Desktop/MyApp
+	python distribute.py -r --appname=MyApp \
+	--bundleid=com.myapp.MyAwesomeApp \
+	--version=1.0 \
+	--ipa=MyAppIPA-1.0.1.ipa \
+	--icon=MyIcon.png \
+	--baseurl=http://mywebsite.com/apps/MyApp \
+	--destination=/Users/aaronsmith/Desktop/MyApp \
 
 The generated files can be uploaded to mywebsite/apps/. Navigate to mywebsite.com/apps/com.myapp.MyAwesomeApp/install.html to see the installation page.
 
@@ -38,7 +44,13 @@ With enterprise certificates and provisions you don't need to obtain user's devi
 
 Example gnerating files for step 2 enterprise:
 
-	python distribute.py -r --appname=MyApp --bundleid=com.myapp.MyAwesomeApp --version=1.0 --ipa=MyAppIPA-1.0.1.ipa --icon=MyIcon.png --baseurl=http://mywebsite.com/apps/MyApp --destination=/Users/aaronsmith/Desktop/MyApp
+	python distribute.py -r --appname=MyApp \
+	--bundleid=com.myapp.MyAwesomeApp \
+	--version=1.0 \
+	--ipa=MyAppIPA-1.0.1.ipa \
+	--icon=MyIcon.png \
+	--baseurl=http://mywebsite.com/apps/MyApp \
+	--destination=/Users/aaronsmith/Desktop/MyApp
 
 The generated files can be uploaded to mywebsite/apps/. Navigate to mywebsite.com/apps/com.myapp.MyAwesomeApp/install.html to see the installation page.
 
