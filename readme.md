@@ -18,7 +18,13 @@ It generates and creates:
 
 Example generating files for step 1:
 
-	python distribute.py -n --appname=MyApp --organization=com.gngrwzrd --bundleid=com.gngrwzrd.MyApp --version=1.0 --baseurl=http://mywebsite.com/apps/MyApp --icon=sampleapps/MyApp/icon.png --destination=/Users/aaronsmith/Desktop/MyApp
+	python distribute.py -n --appname=MyApp \
+	--organization=com.gngrwzrd \
+	--bundleid=com.gngrwzrd.MyApp \
+	--version=1.0 \
+	--baseurl=http://mywebsite.com/apps/MyApp \
+	--icon=sampleapps/MyApp/icon.png \
+	--destination=/Users/aaronsmith/Desktop/MyApp
 
 The files generated can be uploaded to mywebsite.com/apps/MyApp. Navigate to mywebsite.com/apps/MyApp/ to see the device registration page.
 
