@@ -16,7 +16,7 @@ It generates and creates:
 1. html/php/mobileconfig to obtain a user's UDID from mobile Safari.
 2. html/plist for users to install the app.
 
-*Apple requires HTTPS for the ipa installation over the air. You will need it!*
+**Apple requires HTTPS for the ipa installation over the air. You will need it!**
 
 ## ADHOC ##
 
