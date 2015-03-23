@@ -54,7 +54,7 @@ Example generating the install files for step 6:
 
 This script will also keep installation files for each version of your IPA. Name your IPA with the version number in it (MyApp-1.0.1.ipa) so it doesn't get overwritten the next time you generate files.
 
-## Signing Mobileprofile ##
+## Signing Mobileprofile for Adhoc ##
 
 By default your mobileprofile will not be signed. In iOS, users will see a warning when installing the profile. This requires an extra step from the user in order to allow the unsigned profile to be installed.
 
