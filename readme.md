@@ -25,8 +25,8 @@ Adhoc requires these steps:
 1. Generate files to obtain UDID from users.
 2. Upload generated files to your server.
 3. Email users the device registration link.
-4. Use devices.txt file from server and add devices to your adhoc distribution provision in the apple member center.
-5. In Xcode, archive ane export adhoc distribution. Save the IPA for step 6.
+4. Use devices.txt file from server; add them to your adhoc distribution provision in the apple member center.
+5. In Xcode, archive and export adhoc distribution. Save the IPA for step 6.
 6. Generate installation files.
 7. Upload generated files to your server.
 
