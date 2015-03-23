@@ -80,9 +80,9 @@ if($write) {
 
 fclose($devices);
 
-$raw = fopen("raw-device.txt","w");
-fwrite($raw,$data);
-fclose($raw);
+//$raw = fopen("raw-device.txt","w");
+//fwrite($raw,$data);
+//fclose($raw);
 
 header("Location: {{baseurl}}/registered");
 

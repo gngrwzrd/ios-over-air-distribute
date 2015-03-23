@@ -58,13 +58,13 @@ You can also do step 1 and 6 all at once if you have all files required:
 
 	python distribute.py -r -n \
 	--appname=MyApp \
-	--bundleid=com.gngrwzrd.MyApp \
-	--org=com.gngrwzrd \
+	--bundleid=com.myapp.MyApp \
+	--org=com.myapp \
 	--version=1.0 \
-	--baseurl=http://gngrwzrd.com/apps/MyApp \
+	--baseurl=http://mywebsite.com/apps/MyApp \
 	--icon=sampleapps/MyApp/icon.png \
 	--ipa=sampleapps/MyApp/MyApp-1.0.1.ipa \
-	--destination=apps/MyApp/
+	--destination=/Users/aaronsmith/Desktop/MyApp
 
 ## Signing Mobileprofile for Adhoc ##
 
@@ -76,8 +76,8 @@ Example generating files for Adhoc Step 1 with signed mobileprofile:
 
 	python distribute.py -n \
 	--appname=MyApp \
-	--org=com.gngrwzrd \
-	--bundleid=com.gngrwzrd.MyApp \
+	--org=com.myapp \
+	--bundleid=com.myapp.MyApp \
 	--version=1.0 \
 	--baseurl=http://mywebsite.com/apps/MyApp \
 	--icon=sampleapps/MyApp/icon.png \
