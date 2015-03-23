@@ -73,6 +73,4 @@ Enterprise requires only 3 steps:
 	--baseurl=http://mywebsite.com/apps/MyApp \
 	--destination=/Users/aaronsmith/Desktop/MyApp
 
-The generated files can be uploaded to mywebsite/apps/. Navigate to mywebsite.com/apps/com.myapp.MyAwesomeApp/install.html to see the installation page.
-
-This script will also keep older installation html files if you wish to install a previous version. Make sure to name your IPA with a version number in it. EX MyApp-1.0.1.ipa. Then you'll get an install file named MyApp-1.0.1.html.
+This script will also keep installation files for each version of your IPA. Name your IPA with the version number in - MyApp-1.0.1.ipa.
