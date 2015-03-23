@@ -15,7 +15,7 @@
             </array>
         </dict>
         <key>PayloadOrganization</key>
-        <string>{{organization}}</string>
+        <string>{{org}}</string>
         <key>PayloadDisplayName</key>
         <string>Get Your UDID</string>
         <key>PayloadVersion</key>
@@ -23,7 +23,7 @@
         <key>PayloadUUID</key>
         <string>A395BF3C-13B3-4B89-88D0-1F82ADA0EBD1</string>
         <key>PayloadIdentifier</key>
-        <string>{{organization}}.profile-service</string>
+        <string>{{org}}.profile-service</string>
         <key>PayloadDescription</key>
         <string>This temporary profile will be used to find and display your current device's UDID.</string>
         <key>PayloadType</key>

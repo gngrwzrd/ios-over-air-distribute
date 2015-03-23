@@ -28,13 +28,13 @@ Adhoc requires these steps:
 4. Use devices.txt file from server; add them to your adhoc distribution provision in the apple member center.
 5. In Xcode, archive and export adhoc distribution. Save the IPA for step 6.
 6. Generate installation files.
-7. Upload generated files to your server.
+7. Upload generated files and IPA to your server.
 
 Example generating files for step 1:
 
 	python distribute.py -n \
 	--appname=MyApp \
-	--organization=com.gngrwzrd \
+	--org=com.gngrwzrd \
 	--bundleid=com.gngrwzrd.MyApp \
 	--version=1.0 \
 	--baseurl=http://mywebsite.com/apps/MyApp \
@@ -50,9 +50,21 @@ Example generating the install files for step 6:
 	--ipa=MyAppIPA-1.0.1.ipa \
 	--icon=MyIcon.png \
 	--baseurl=http://mywebsite.com/apps/MyApp \
-	--destination=/Users/aaronsmith/Desktop/MyApp \
+	--destination=/Users/aaronsmith/Desktop/MyApp
 
 This script will also keep installation files for each version of your IPA. Name your IPA with the version number in it (MyApp-1.0.1.ipa) so it doesn't get overwritten the next time you generate files.
+
+You can also do step 1 and 6 all at once if you have all files required:
+
+	python distribute.py -r -n \
+	--appname=MyApp \
+	--bundleid=com.gngrwzrd.MyApp \
+	--org=com.gngrwzrd \
+	--version=1.0 \
+	--baseurl=http://gngrwzrd.com/apps/MyApp \
+	--icon=sampleapps/MyApp/icon.png \
+	--ipa=sampleapps/MyApp/MyApp-1.0.1.ipa \
+	--destination=apps/MyApp/
 
 ## Signing Mobileprofile for Adhoc ##
 
@@ -64,7 +76,7 @@ Example generating files for Adhoc Step 1 with signed mobileprofile:
 
 	python distribute.py -n \
 	--appname=MyApp \
-	--organization=com.gngrwzrd \
+	--org=com.gngrwzrd \
 	--bundleid=com.gngrwzrd.MyApp \
 	--version=1.0 \
 	--baseurl=http://mywebsite.com/apps/MyApp \

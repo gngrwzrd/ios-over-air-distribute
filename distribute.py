@@ -7,7 +7,7 @@ parser.add_argument("-e","--enterprise",action="store_true",help="The app being 
 parser.add_argument("-s","--sign",action="store_true",help="(Optional) sign the mobileconfig with your servers ssl certificates.")
 parser.add_argument("-d","--destination",help="(Optional) Destination directory where to create all files.")
 parser.add_argument("--appname",help="The application name, ex: Tales Untold, DOcumentr, etc.")
-parser.add_argument("--organization",help="An organization identifier, ex: com.apptitude, com.gngrwzrd, com.pixelrevision, etc.")
+parser.add_argument("--org",help="An organization identifier, ex: com.apptitude, com.gngrwzrd, com.pixelrevision, etc.")
 parser.add_argument("--bundleid",help="THe application's bundle id. ex: com.talesuntold.TalesUntold.")
 parser.add_argument("--version",help="The application's CFBundleShortVersionString value.")
 parser.add_argument("--baseurl",help="The base HTTP URL where files will be uploaded to.")
@@ -26,7 +26,7 @@ For Adhoc Distribution, these are generally the steps:
 
 Step 1:
 Make a new app with distribute.py for users to register their devices:
-python distribute.py -n --appname="Tales Untold" --organization="com.gngrwzrd" --bundleid=com.talesuntold.TalesUntold --baseurl="http://l.gngrwzrd.com/apps" --version=1.0
+python distribute.py -n --appname="Tales Untold" --org="com.gngrwzrd" --bundleid=com.talesuntold.TalesUntold --baseurl="http://l.gngrwzrd.com/apps" --version=1.0
 
 Step 2:
 Upload the generated files to the Base URL chosen above.
@@ -83,7 +83,7 @@ def replace_args(args,others,content,outfile,urlencode=False):
 	if getattr(args,"appname",None): content = re.sub("{{appname}}",args.appname,content)
 	if getattr(args,"baseurl",None): content = re.sub("{{baseurl}}",args.baseurl,content)
 	if getattr(args,"bundleid",None): content = re.sub("{{bundleid}}",args.bundleid,content)
-	if getattr(args,"organization",None): content = re.sub("{{organization}}",args.organization,content)
+	if getattr(args,"org",None): content = re.sub("{{org}}",args.org,content)
 	if getattr(args,"version",None): content = re.sub("{{version}}",args.version,content)
 	if getattr(args,"ipa",None): content = re.sub("{{ipa}}",args.ipa,content)
 	if getattr(args,"ipaname",None): content = re.sub("{{ipaname}}",args.ipaname,content)
@@ -91,7 +91,7 @@ def replace_args(args,others,content,outfile,urlencode=False):
 	if urlencode and getattr(args,"appname",None): content = re.sub("{{encoded_appname}}",urllib.quote_plus(args.appname,''),content)
 	if urlencode and getattr(args,"baseurl",None): content = re.sub("{{encoded_baseurl}}",urllib.quote_plus(args.baseurl,''),content)
 	if urlencode and getattr(args,"bundleid",None): content = re.sub("{{encoded_bundleid}}",urllib.quote_plus(args.bundleid,''),content)
-	if urlencode and getattr(args,"organization",None): content = re.sub("{{encoded_organization}}",urllib.quote_plus(args.organization,''),content)
+	if urlencode and getattr(args,"org",None): content = re.sub("{{encoded_org}}",urllib.quote_plus(args.org,''),content)
 	if urlencode and getattr(args,"version",None): content = re.sub("{{encoded_version}}",urllib.quote_plus(args.version,''),content)
 	if urlencode and getattr(args,"ipa",None): content = re.sub("{{encoded_ipa}}",urllib.quote_plus(args.ipa,''),content)
 	if urlencode and getattr(args,"ipaname",None): content = re.sub("{{encoded_ipaname}}",urllib.quote_plus(args.ipaname,''),content)
@@ -214,8 +214,8 @@ def release(args):
 	copy_js(args)
 
 if args.newapp:
-	if not args.appname or not args.organization or not args.bundleid or not args.baseurl:
-		print "New app requires at least appname, organization, bundleid, and baseurl parameters"
+	if not args.appname or not args.org or not args.bundleid or not args.baseurl:
+		print "New app requires at least appname, org, bundleid, and baseurl parameters"
 	else:
 		newapp(args)
 
