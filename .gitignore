@@ -1,1 +1,4 @@
 *.ipa
+build/
+ssl/
+apps/

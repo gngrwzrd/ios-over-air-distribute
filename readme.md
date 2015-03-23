@@ -54,6 +54,27 @@ Example generating the install files for step 6:
 
 This script will also keep installation files for each version of your IPA. Name your IPA with the version number in it (MyApp-1.0.1.ipa) so it doesn't get overwritten the next time you generate files.
 
+## Signing Mobileprofile ##
+
+By default your mobileprofile will not be signed. In iOS, users will see a warning when installing the profile. This requires an extra step from the user in order to allow the unsigned profile to be installed.
+
+Using your servers SSL certificates you can sign the mobileprofile so it's trusted when it opens in the iOS settings app.
+
+Example generating files for Adhoc Step 1 with signed mobileprofile:
+
+	python distribute.py -n \
+	--appname=MyApp \
+	--organization=com.gngrwzrd \
+	--bundleid=com.gngrwzrd.MyApp \
+	--version=1.0 \
+	--baseurl=http://mywebsite.com/apps/MyApp \
+	--icon=sampleapps/MyApp/icon.png \
+	--destination=/Users/aaronsmith/Desktop/MyApp \
+	-s \
+	--sslcrt=server.crt \
+	--sslkey=servert.key \
+	--sslchain=cert_chain.crt
+
 ## ENTERPRISE ##
 
 With enterprise certificates and provisions you don't need to obtain user's device UDIDs. You can instead  skip to generating the install files.
@@ -76,3 +97,4 @@ Example generating the install files for step 2.
 	--destination=/Users/aaronsmith/Desktop/MyApp
 
 This script will also keep installation files for each version of your IPA. Name your IPA with the version number in it (MyApp-1.0.1.ipa) so it doesn't get overwritten the next time you generate files.
+

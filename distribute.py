@@ -1,17 +1,21 @@
-import argparse,re,os,shutil,urllib
+import argparse,re,os,shutil,urllib,subprocess
 
 parser = argparse.ArgumentParser(description="Template file generator for iOS over the air distribution and profile installation.")
 parser.add_argument("-n","--newapp",action="store_true",help="Make a new app directory with all profile templates prepared.")
 parser.add_argument("-r","--release",action="store_true",help="Release a new IPA, making a new directory in an existing application directory.")
 parser.add_argument("-e","--enterprise",action="store_true",help="The app being released is signed with enterprise certs and provisions.")
+parser.add_argument("-s","--sign",action="store_true",help="(Optional) sign the mobileconfig with your servers ssl certificates.")
 parser.add_argument("-d","--destination",help="(Optional) Destination directory where to create all files.")
 parser.add_argument("--appname",help="The application name, ex: Tales Untold, DOcumentr, etc.")
 parser.add_argument("--organization",help="An organization identifier, ex: com.apptitude, com.gngrwzrd, com.pixelrevision, etc.")
-parser.add_argument("--bundleid",help="THe application's bundle id. ex: com.talesuntold.TalesUntold")
+parser.add_argument("--bundleid",help="THe application's bundle id. ex: com.talesuntold.TalesUntold.")
 parser.add_argument("--version",help="The application's CFBundleShortVersionString value.")
 parser.add_argument("--baseurl",help="The base HTTP URL where files will be uploaded to.")
 parser.add_argument("--ipa",help="The IPA file to release.")
 parser.add_argument("--icon",help="An icon to display in generated templates.")
+parser.add_argument("--sslcrt",help="Your servers crt file.")
+parser.add_argument("--sslkey",help="Your servers key file. (Passwords not supported).")
+parser.add_argument("--sslchain",help="Your servers cert chain file.")
 
 """
 ** Adhoc and Enterprise Distribution with Safari requires HTTPS. **
@@ -163,6 +167,19 @@ def write_enterprise_index(args):
 		True
 	)
 
+def sign_mobileconfig(args):
+	unsignedconfig = args.destination + "/profile.mobileconfig"
+	signedconfig = args.destination + "/signed.profile.mobileconfig"
+	crt = args.sslcrt
+	key = args.sslkey
+	chain = args.sslchain
+	command = "/usr/bin/openssl smime -sign -in %s -out %s " % (unsignedconfig,signedconfig)
+	command = command + "-signer %s -inkey %s " % (crt,key)
+	command = command + "-certfile %s -outform der -nodetach" % (chain)
+	subprocess.call(command,shell=True)
+	os.unlink(unsignedconfig)
+	shutil.move(signedconfig,unsignedconfig)
+
 def copy_ipa(args):
 	shutil.copyfile(args.ipa, "%s/%s" % (args.destination,args.ipaname+".ipa"))
 
@@ -183,6 +200,7 @@ def newapp(args):
 	write_retrieve(args)
 	copy_icon(args)
 	copy_js(args)
+	if args.sign: sign_mobileconfig(args)
 
 def release(args):
 	try: os.mkdir(args.destination)
