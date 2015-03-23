@@ -64,6 +64,8 @@ Enterprise requires only 3 steps:
 2. Generate the installation files.
 3. Upload generated files to your server.
 
+Example generating the install files for step 2.
+
 	python distribute.py -r -e \
 	--appname=MyApp \
 	--bundleid=com.myapp.MyAwesomeApp \
