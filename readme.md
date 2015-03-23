@@ -91,6 +91,8 @@ Example generating files for Adhoc Step 1 with signed mobileprofile:
 
 With enterprise certificates and provisions you don't need to obtain user's device UDIDs. You can instead  skip to generating the install files.
 
+**Apple requires HTTPS for IPA installation over the air. You will need it!**
+
 Enterprise requires only 3 steps:
 
 1. In Xcode, archive and export for Enterprise Distribution. Save the IPA for step 2.
