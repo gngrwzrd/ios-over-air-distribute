@@ -154,6 +154,15 @@ def write_app_plist(args):
 		open(dest,"w")
 	)
 
+def write_enterprise_index(args):
+	args.baseurl = secure_baseurl(args.baseurl)
+	dest = args.destination + "/" + "index.html"
+	replace_args(args,{},
+		open("templates/template.install.html","r").read(),
+		open(dest,"w"),
+		True
+	)
+
 def copy_ipa(args):
 	shutil.copyfile(args.ipa, "%s/%s" % (args.destination,args.ipaname+".ipa"))
 
@@ -178,7 +187,8 @@ def newapp(args):
 def release(args):
 	try: os.mkdir(args.destination)
 	except: pass
-	if not args.enterprise: write_app_plist(args)
+	if args.enterprise: write_enterprise_index(args)
+	write_app_plist(args)
 	write_ipa_install(args)
 	write_install(args)
 	copy_ipa(args)
