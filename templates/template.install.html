@@ -14,8 +14,9 @@ a {font-size:24px;}
 	display:block;
 	margin-top:8px;
 }
-.desktop {color:red;font-size:24px;}
-.mobile {display:none;}
+.desktop{color:red;font-size:24px;}
+.mobile{display:none;}
+.gohome{display:none;font-size:12px;color:gray;}
 </style>
 </head>
 <body>
@@ -28,7 +29,10 @@ Open this website on your iOS device.
 <div class="mobile">
 <a href="itms-services://?action=download-manifest&amp;url={{encoded_baseurl}}%2F{{encoded_ipaname}}.plist"><img class="icon" src="{{iconname}}" /></a><br/>
 <small class="appname">{{appname}}</small><br/>
-<a href="itms-services://?action=download-manifest&amp;url={{encoded_baseurl}}%2F{{encoded_ipaname}}.plist">Tap to Install</a>
+<a onclick="onInstall();" href="itms-services://?action=download-manifest&amp;url={{encoded_baseurl}}%2F{{encoded_ipaname}}.plist">Tap to Install</a>
+<div class="gohome">
+<br/><br/>Press the Home button on your device and find {{appname}}.
+</div>
 </div>
 </center>
 </body>
