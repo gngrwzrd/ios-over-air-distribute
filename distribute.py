@@ -13,6 +13,7 @@ parser.add_argument("--version",help="The application's CFBundleShortVersionStri
 parser.add_argument("--baseurl",help="The base HTTP URL where files will be uploaded to.")
 parser.add_argument("--ipa",help="The IPA file to release.")
 parser.add_argument("--icon",help="An icon to display in generated templates.")
+parser.add_argument("--rnotes",help="Release notes to add to the install page.")
 parser.add_argument("--sslcrt",help="Your servers crt file.")
 parser.add_argument("--sslkey",help="Your servers key file. (Passwords not supported).")
 parser.add_argument("--sslchain",help="Your servers cert chain file.")
@@ -101,13 +102,13 @@ def replace_args(args,others,content,outfile,urlencode=False):
 
 def write_mobileconfig(args):
 	replace_args(args,{},
-		open("templates/template.mobileconfig","r").read(),
+		open("assets/template.mobileconfig","r").read(),
 		open(args.destination+"/profile.mobileconfig","w")
 	)
 
 def write_index(args):
 	replace_args(args,{},
-		open("templates/template.index.html","r").read(),
+		open("assets/template.index.html","r").read(),
 		open(args.destination+"/index.html","w")
 	)
 
@@ -115,13 +116,13 @@ def write_registered(args):
 	try: os.mkdir("%s/registered" % (args.destination))
 	except: pass
 	replace_args(args,{},
-		open("templates/template.registered.html","r").read(),
+		open("assets/template.registered.html","r").read(),
 		open(args.destination+"/registered/index.html","w")
 	)
 
 def write_retrieve(args):
 	replace_args(args,{},
-		open("templates/template.retrieve.php","r").read(),
+		open("assets/template.retrieve.php","r").read(),
 		open(args.destination+"/retrieve.php","w")
 	)
 
@@ -136,7 +137,7 @@ def write_install(args):
 	args.baseurl = secure_baseurl(args.baseurl)
 	dest = args.destination + "/" + "install.html"
 	replace_args(args,{},
-		open("templates/template.install.html","r").read(),
+		open("assets/template.install.html","r").read(),
 		open(dest,"w"),
 		True
 	)
@@ -145,7 +146,7 @@ def write_ipa_install(args):
 	args.baseurl = secure_baseurl(args.baseurl)
 	dest = args.destination + "/" + args.ipaname + ".html"
 	replace_args(args,{},
-		open("templates/template.install.html","r").read(),
+		open("assets/template.install.html","r").read(),
 		open(dest,"w"),
 		True
 	)
@@ -154,7 +155,7 @@ def write_app_plist(args):
 	args.baseurl = secure_baseurl(args.baseurl)
 	dest = args.destination + "/" + args.ipaname + ".plist"
 	replace_args(args,{},
-		open("templates/template.app.plist","r").read(),
+		open("assets/template.app.plist","r").read(),
 		open(dest,"w")
 	)
 
@@ -162,7 +163,7 @@ def write_enterprise_index(args):
 	args.baseurl = secure_baseurl(args.baseurl)
 	dest = args.destination + "/" + "index.html"
 	replace_args(args,{},
-		open("templates/template.install.html","r").read(),
+		open("assets/template.install.html","r").read(),
 		open(dest,"w"),
 		True
 	)
@@ -188,8 +189,12 @@ def copy_icon(args):
 		shutil.copyfile(args.icon,"%s/%s"%(args.destination,args.iconname))
 
 def copy_js(args):
-	shutil.copyfile("scripts/main.js","%s/main.js"%(args.destination))
-	shutil.copyfile("scripts/jquery-1.8.3.min.js","%s/jquery.min.js"%(args.destination))
+	shutil.copyfile("assets/main.js","%s/main.js"%(args.destination))
+	shutil.copyfile("assets/jquery-1.8.3.min.js","%s/jquery.min.js"%(args.destination))
+
+def copy_css(args):
+	shutil.copyfile("assets/main.css","%s/main.css"%(args.destination))
+	shutil.copyfile("assets/buttons.css","%s/buttons.css"%(args.destination))
 
 def newapp(args):
 	try: os.mkdir(args.destination)
@@ -200,6 +205,7 @@ def newapp(args):
 	write_retrieve(args)
 	copy_icon(args)
 	copy_js(args)
+	copy_css(args)
 	if args.sign: sign_mobileconfig(args)
 
 def release(args):
@@ -212,6 +218,7 @@ def release(args):
 	copy_ipa(args)
 	copy_icon(args)
 	copy_js(args)
+	copy_css(args)
 
 if args.newapp:
 	if not args.appname or not args.org or not args.bundleid or not args.baseurl:
