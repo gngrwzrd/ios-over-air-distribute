@@ -2,12 +2,12 @@
 
 Python script for generating static ios over the air distribution files. And a simple read-only PHP dashboard for viewing those files.
 
-Dashboard Sample:
-http://gngrwzrd.com/dist/dashboard.php
-
 **Apple requires HTTPS (trusted ssl, not self signed) for IPA installation over the air. You will need it!**
 
 ## Dashboard ##
+
+Dashboard Sample:
+http://gngrwzrd.com/dist/dashboard.php
 
 The dashboard is intended to be a private utility for you to view all the static files generated. When you're distributing the application, you'd instead send direct links to the registration page or install page.
 
