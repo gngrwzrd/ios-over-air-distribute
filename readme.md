@@ -25,7 +25,7 @@ Adhoc requires these steps:
 
 Example generating files for step 1:
 	
-	python distribute.py -n \
+	python simpledist.py -n \
 	--appname=MyApp \
 	--bundleid=com.gngrwzrd.MyApp \
 	--baseurl=http://mywebsite.com/apps/MyApp \
@@ -34,7 +34,7 @@ Example generating files for step 1:
 
 Example generating the install files for step 6:
 
-	python distribute.py -r \
+	python simpledist.py -r \
 	--appname=MyApp \
 	--bundleid=com.myapp.MyAwesomeApp \
 	--ipa=MyAppIPA-1.0.1.ipa \
@@ -46,7 +46,7 @@ This script will also keep installation files for each version of your IPA. Name
 
 You can also do step 1 and 6 all at once if you have all files required:
 
-	python distribute.py -r -n \
+	python simpledist.py -r -n \
 	--appname=MyApp \
 	--bundleid=com.myapp.MyApp \
 	--baseurl=http://mywebsite.com/apps/MyApp \
@@ -62,7 +62,7 @@ Using your servers SSL certificates you can sign the mobileprofile so it's trust
 
 Example generating files for Adhoc Step 1 with signed mobileprofile:
 
-	python distribute.py -n \
+	python simpledist.py -n \
 	--appname=MyApp \
 	--bundleid=com.myapp.MyApp \
 	--baseurl=http://mywebsite.com/apps/MyApp \
@@ -87,7 +87,7 @@ Enterprise requires only 3 steps:
 
 Example generating the install files for step 2.
 
-	python distribute.py -r -e \
+	python simpledist.py -r -e \
 	--appname=MyApp \
 	--bundleid=com.myapp.MyAwesomeApp \
 	--ipa=MyAppIPA-1.0.1.ipa \
