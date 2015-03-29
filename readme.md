@@ -118,6 +118,13 @@ The profile delivery system is very picky. If you attempt to change anything in 
 
 Over the air IPA installation is also very picky. I recommend the baseurl be as short as possible, try to eliminate special characters. Generally I'd try and stick to a-Z,0-9,-_/.
 
-## Common Errors ##
+## Common Profile Delivery Errors ##
+
+Unsupported URL. This is your URL callback in the profile.mobileconfig file. Make sure everything is URL encoded properly.
+
+Can't connect to server. If your URL callback returns 404, or any errors, chances are you'll see this error.
+
+## Common Installation Errors ##
 
 Can't connect to mysite.com - this is most likely because your server doesn't have HTTPS, or have trusted SSL certificate.
+

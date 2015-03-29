@@ -15,15 +15,15 @@
             </array>
         </dict>
         <key>PayloadOrganization</key>
-        <string>{{org}}</string>
+        <string>iOS Distribution</string>
         <key>PayloadDisplayName</key>
-        <string>Get Your UDID</string>
+        <string>AdHoc Device Registration</string>
         <key>PayloadVersion</key>
         <integer>1</integer>
         <key>PayloadUUID</key>
         <string>A395BF3C-13B3-4B89-88D0-1F82ADA0EBD1</string>
         <key>PayloadIdentifier</key>
-        <string>{{org}}.profile-service</string>
+        <string>ios-oad.profile-service</string>
         <key>PayloadDescription</key>
         <string>This temporary profile will be used to find and display your current device's UDID.</string>
         <key>PayloadType</key>

@@ -3,35 +3,27 @@ body {
 	margin:0;
 	padding:0;
 }
-a {
-	color:#51535B;
-}
-table {
-	width:100%;
-}
-form {
-	margin:0;
-	padding:0;
-}
+a {color:#51535B;}
+table {width:100%;}
+form {margin:0;padding:0;}
+pre.session{display:none;}
+.center {text-align:center;}
+
 .desktop{color:red;font-size:24px;}
 .mobile{display:none;}
+
 .rederror {
 	border:solid 1px red;
 }
-.center {
-	text-align:center;
-}
+
 .content {
-	width:300px;
-	margin:0 auto;
-	margin-top:20px;
+	margin:0;
+	padding:0;
 	border-top:solid 1px #CCC;
 	border-left:solid 1px #CCC;
 	border-right:solid 1px #CCC;
 }
-.section {
-	margin-bottom:20px;
-}
+
 .sectionHeader {
 	font-size:22px;
 	padding:20px;
@@ -39,82 +31,81 @@ form {
 	background-color:#DDD;
 	border-bottom:solid 1px #CCC;
 }
+
 .sectionHeaderIcon {
 	border-radius:6px;
 	vertical-align:middle;
 	margin-top:-3px;
 }
+
 .sectionHeaderAppBundleId {
 	font-size:10px;
 	font-color:gray;
 	font-weight:normal;
 }
+
 .sectionHeader table tr td {
 	font-size:22px;
 	font-weight:bold;
 	background-color:#DDD;
 }
+
 .sectionMenu {
-	padding:12px 4px 8px 18px;
+	padding:8px 4px 8px 18px;
 	background-color:#EBF0F3;
 	border-bottom:solid 1px #CCC;
-	border-top:solid 1px #CCC;
 	font-size:12px;
 }
+
 .sectionRow {
 	padding:20px;
 	padding-left:20px;
 	background-color:#F3F3F3;
 	border-bottom:solid 1px #CCC;
+	border-top:solid 1px #CCC;
 	font-size:16px;
 	color:#51535B;
+	margin-top:10px;
 }
+
 .sectionRow a {
 	font-size:16px;
 }
+
 .sectionRowIcon {
 	border-radius:6px;
 	vertical-align:middle;
 	margin-top:-2px;
 }
+
 .sectionRow table {
 	margin:0;
 	padding:0;
 }
+
 .sectionRow table tr {
 	margin:0;
 	padding:0;
 }
+
 .sectionRow table tr td {
 	color:#51535B;
+	font-size:16px;
 }
-.sectionRowHighlighted {
-	padding:8px 20px 5px 20px;
-	background-color:#D05E5D;
-	font-weight:bold;
-	color:white;
+
+.sectionRow a.alink {
+	font-size:16px;
 }
+
+.sectionRowAppLinks {
+	margin-top:5px;
+}
+
 .sectionRowForm table tr td.label {
 	width:120px;
 }
-.sectionRowForm input[type='text'] {
-	width:100%;
-	font-size:16px;
-	height:25px;
-}
 .sectionRowForm input[type='button'] {
 	width:100%;
-}
-.sectionRowForm input[type='submit'] {
-	width:100%;
-}
-.footerMessage {
-	margin:0 auto;
-	width:600px;
-	font-size:14px;
-	margin-top:20px;
-	color:gray;
-	padding-left:20px;
 }
 .desktop .sectionRow {
 	color:red;
@@ -124,4 +115,17 @@ form {
 }
 .rnotes a {
 	font-size:12px;
+}
+
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) 
+and (orientation : portrait) {
+	.sectionRow table tr td {
+		font-size:14px;
+	}
+
+	.sectionRow a.alink {
+		font-size:12px;
+	}
 }
