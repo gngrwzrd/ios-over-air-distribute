@@ -7,38 +7,22 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// Override point for customization after application launch.
-	
-	NSError * error;
-	
 	PLCrashReporter * crash = [PLCrashReporter sharedReporter];
 	if([crash hasPendingCrashReport]) {
-		NSLog(@"has pending crash");
 		NSData * crashData = [crash loadPendingCrashReportData];
 		if(crashData) {
 			NSURL * url = [NSURL URLWithString:@"http://gngrwzrd.com/dist/apps/MyCrashingApp/crash/log.php"];
 			NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:url];
 			[request setHTTPMethod:@"POST"];
-			
-			PLCrashReport *report = [[PLCrashReport alloc] initWithData: crashData error: &error];
+			PLCrashReport *report = [[PLCrashReport alloc] initWithData:crashData error:nil];
 			NSString * log = [PLCrashReportTextFormatter stringValueForCrashReport:report withTextFormat:PLCrashReportTextFormatiOS];
-			NSLog(@"%@",log);
 			NSData * logData = [log dataUsingEncoding:NSUTF8StringEncoding];
-			
 			NSURLSessionUploadTask * upload = [[NSURLSession sharedSession] uploadTaskWithRequest:request fromData:logData completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-				NSLog(@"%@",error);
-				NSLog(@"%@",response);
-				NSLog(@"%@",data);
 			}];
-			
 			[upload resume];
 		}
 	}
-	
-	if(![crash enableCrashReporterAndReturnError:&error]) {
-		NSLog(@"Error");
-	}
-	
+	[crash enableCrashReporter];
 	return YES;
 }
 

@@ -3,13 +3,17 @@ body {
 	margin:0;
 	padding:0;
 }
+
 a {color:#51535B;}
-table {width:100%;}
-form {margin:0;padding:0;}
+
+table {width:100%;margin:0;padding:0;}
+
 pre.session{display:none;}
+
 .center {text-align:center;}
 
 .desktop{color:red;font-size:24px;}
+
 .mobile{display:none;}
 
 .rederror {
@@ -62,10 +66,8 @@ pre.session{display:none;}
 	padding-left:20px;
 	background-color:#F3F3F3;
 	border-bottom:solid 1px #CCC;
-	border-top:solid 1px #CCC;
 	font-size:16px;
 	color:#51535B;
-	margin-top:10px;
 }
 
 .sectionRow a {
@@ -78,54 +80,22 @@ pre.session{display:none;}
 	margin-top:-2px;
 }
 
-.sectionRow table {
-	margin:0;
-	padding:0;
-}
-
-.sectionRow table tr {
-	margin:0;
-	padding:0;
-}
-
-.sectionRow table tr td {
-	color:#51535B;
-	font-size:16px;
-}
-
 .sectionRow a.alink {
-	font-size:16px;
+	font-size:10px;
 }
 
 .sectionRowAppLinks {
 	margin-top:5px;
 }
 
-.sectionRowForm table tr td.label {
-	width:120px;
-}
-.sectionRowForm input[type='button'] {
-	width:100%;
-}
 .desktop .sectionRow {
 	color:red;
 }
+
 .rnotes {
 	margin-top:20px;
 }
+
 .rnotes a {
 	font-size:12px;
-}
-
-@media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 667px) 
-and (orientation : portrait) {
-	.sectionRow table tr td {
-		font-size:14px;
-	}
-
-	.sectionRow a.alink {
-		font-size:12px;
-	}
 }

@@ -301,6 +301,25 @@ class SimpleDist {
 		$path = $this->joinPaths(array($this->appsPath,$app,"crash",$this->uuid().'.txt'));
 		$this->writeFileContent($path,$data);
 	}
+
+	function getCrashCountForApp($app) {
+		$path = $this->joinPaths(array($this->appsPath,$app,"crash"));
+		$files = $this->getFilesAtPath($path,"txt",array());
+		return count($files);
+	}
+
+	function getDevicesCountForApp($app) {
+		$devices = $this->joinPaths(array($this->appsPath,$app,"devices.txt"));
+		if(!file_exists($devices)) {
+			return 0;
+		}
+		$handle = fopen($devices,"r");
+		$count = -1;
+		while(fgets($handle)) {
+			$count++;
+		}
+		return $count;
+	}
 }
 
 ?>

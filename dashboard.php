@@ -24,25 +24,36 @@ $action = $helper->getActionFromURL("alist");
 		foreach($appnames as $app) {
 			$recruit = $helper->getRecruitLinkForApp($app);
 			$devices = $helper->getDevicesLinkForApp($app);
+			$devicescount = $helper->getDevicesCountForApp($app);
 			$install = $helper->getInstallLinkForApp($app);
 			$crashes = $helper->getCrashesLinkForApp($app);
+			$crashcount = $helper->getCrashCountForApp($app);
 			$bundleid = $helper->getBundleIdForApp($app);
 			$icon = $helper->getIconPathForApp($app);
+			$crashlabel = "Crashes";
+			if($crashcount > 0) {
+				$crashlabel .= " (" . $crashcount . ")";
+			}
+			$deviceslabel = "Devices";
+			if($devicescount > 0) {
+				$deviceslabel .= " (" . $devicescount . ")";
+			}
 		?>
 		<div class="sectionRow">
-			<table><tr>
-			<td>
-				<img class="sectionRowIcon" src="<?php echo $icon; ?>" width="50" height="50" />
-			</td>
-			<td>
-				<a href="?a=vlist&app=<?php echo $app;?>"><?php echo $app;?></a>
-				<div class="sectionRowAppLinks">
-					<a class="alink" href="<?php echo $recruit ?>">Register</a>&nbsp;
-					<a class="alink" href="<?php echo $install ?>">Install</a>&nbsp;
-					<a class="alink" href="<?php echo $devices ?>">Device UDIDs</a>&nbsp;
-					<a class="alink" href="<?php echo $crashes ?>">Crashes</a>
-				</div>
-			</td></tr></table>
+			<table cellpadding="0" cellspacing="0"><tr>
+				<td width="70">
+					<img class="sectionRowIcon" src="<?php echo $icon; ?>" width="50" height="50" />
+				</td>
+				<td>
+					<a href="?a=vlist&app=<?php echo $app;?>"><?php echo $app;?></a>
+					<div class="sectionRowAppLinks">
+						<a class="alink" href="<?php echo $recruit ?>">Register</a>&nbsp;
+						<a class="alink" href="<?php echo $install ?>">Install</a>&nbsp;
+						<a class="alink" href="<?php echo $devices ?>"><?php echo $deviceslabel; ?></a>&nbsp;
+						<a class="alink" href="<?php echo $crashes ?>"><?php echo $crashlabel; ?></a>
+					</div>
+				</td>
+			</tr></table>
 		</div>
 		<?php } ?>
 		</div>
@@ -58,7 +69,7 @@ $action = $helper->getActionFromURL("alist");
 		<div class="sectionHeader">
 			<table cellspacing=0 cellpadding=0><tr>
 			<td width="75"><img class="sectionHeaderIcon" src="<?php echo $icon; ?>" width="50" height="50" /></td>
-			<td><?php echo $appname; ?> Versions
+			<td><?php echo $appname; ?>
 			<div class="sectionHeaderAppBundleId"><?php echo $bundleid ?></div></td>
 			</tr></table>
 		</div>
@@ -91,7 +102,7 @@ $action = $helper->getActionFromURL("alist");
 		<div class="sectionHeader">
 			<table cellspacing=0 cellpadding=0><tr>
 			<td width="75"><img class="sectionHeaderIcon" src="<?php echo $icon; ?>" width="50" height="50" /></td>
-			<td><?php echo $app; ?> Crashes
+			<td><?php echo $app; ?>
 			<div class="sectionHeaderAppBundleId"><?php echo $bundleid ?></div></td>
 			</tr></table>
 		</div>

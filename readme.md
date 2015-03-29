@@ -1,22 +1,15 @@
 ## ios-over-air-distribute ##
 
-A python command to generate files for over the air adhoc distribution and enterprise distribution.
+Python script for generating static ios over the air distribution files. And a simple read-only PHP dashboard for viewing those files.
 
-Device Registration Sample:
-http://gngrwzrd.com/apps/MyApp
-
-Devices txt sample:
-http://gngrwzrd.com/apps/MyApp/devices.txt
-
-Installation Sample:
-http://gngrwzrd.com/apps/MyApp/install.html
-
-It generates and creates:
-
-1. html/php/mobileconfig to obtain a user's UDID from mobile Safari.
-2. html/plist for users to install the app.
+Dashboard Sample:
+http://gngrwzrd.com/dist/dashboard.php
 
 **Apple requires HTTPS (trusted ssl, not self signed) for IPA installation over the air. You will need it!**
+
+## Dashboard ##
+
+The dashboard is intended to be a private utility for you to view all the static files generated. When you're distributing the application, you'd instead send direct links to the registration page or install page.
 
 ## ADHOC ##
 
@@ -31,12 +24,10 @@ Adhoc requires these steps:
 7. Upload generated files and IPA to your server.
 
 Example generating files for step 1:
-
+	
 	python distribute.py -n \
 	--appname=MyApp \
-	--org=com.gngrwzrd \
 	--bundleid=com.gngrwzrd.MyApp \
-	--version=1.0 \
 	--baseurl=http://mywebsite.com/apps/MyApp \
 	--icon=sampleapps/MyApp/icon.png \
 	--destination=/Users/aaronsmith/Desktop/MyApp
@@ -46,7 +37,6 @@ Example generating the install files for step 6:
 	python distribute.py -r \
 	--appname=MyApp \
 	--bundleid=com.myapp.MyAwesomeApp \
-	--version=1.0 \
 	--ipa=MyAppIPA-1.0.1.ipa \
 	--icon=MyIcon.png \
 	--baseurl=http://mywebsite.com/apps/MyApp \
@@ -59,8 +49,6 @@ You can also do step 1 and 6 all at once if you have all files required:
 	python distribute.py -r -n \
 	--appname=MyApp \
 	--bundleid=com.myapp.MyApp \
-	--org=com.myapp \
-	--version=1.0 \
 	--baseurl=http://mywebsite.com/apps/MyApp \
 	--icon=sampleapps/MyApp/icon.png \
 	--ipa=sampleapps/MyApp/MyApp-1.0.1.ipa \
@@ -76,9 +64,7 @@ Example generating files for Adhoc Step 1 with signed mobileprofile:
 
 	python distribute.py -n \
 	--appname=MyApp \
-	--org=com.myapp \
 	--bundleid=com.myapp.MyApp \
-	--version=1.0 \
 	--baseurl=http://mywebsite.com/apps/MyApp \
 	--icon=sampleapps/MyApp/icon.png \
 	--destination=/Users/aaronsmith/Desktop/MyApp \
@@ -104,13 +90,37 @@ Example generating the install files for step 2.
 	python distribute.py -r -e \
 	--appname=MyApp \
 	--bundleid=com.myapp.MyAwesomeApp \
-	--version=1.0 \
 	--ipa=MyAppIPA-1.0.1.ipa \
 	--icon=MyIcon.png \
 	--baseurl=http://mywebsite.com/apps/MyApp \
 	--destination=/Users/aaronsmith/Desktop/MyApp
 
 This script will also keep installation files for each version of your IPA. Name your IPA with the version number in it (MyApp-1.0.1.ipa) so it doesn't get overwritten the next time you generate files.
+
+## Crashes ##
+
+You can accept crashes from plcrashreporter. Example:
+
+	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+		PLCrashReporter * crash = [PLCrashReporter sharedReporter];
+		if([crash hasPendingCrashReport]) {
+			NSData * crashData = [crash loadPendingCrashReportData];
+			if(crashData) {
+				NSURL * url = [NSURL URLWithString:@"http://gngrwzrd.com/dist/apps/MyCrashingApp/crash/log.php"];
+				NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:url];
+				[request setHTTPMethod:@"POST"];
+				PLCrashReport *report = [[PLCrashReport alloc] initWithData:crashData error:nil];
+				NSString * log = [PLCrashReportTextFormatter stringValueForCrashReport:report withTextFormat:PLCrashReportTextFormatiOS];
+				NSData * logData = [log dataUsingEncoding:NSUTF8StringEncoding];
+				NSURLSessionUploadTask * upload = [[NSURLSession sharedSession] uploadTaskWithRequest:request fromData:logData completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+				}];
+				[upload resume];
+			}
+		}
+		[crash enableCrashReporter];
+		return YES;
+	}
+
 
 ## Extra Information ##
 

@@ -23,16 +23,16 @@ $bundleId = $helper->getBundleIdForApp($app);
 		<div class="sectionHeaderAppBundleId">{{bundleid}}</div></td>
 		</tr></table>
 	</div>
-	<!--<div class="desktop">
+	<div class="desktop">
 		<div class="sectionRow center">
 			Open this page on your iOS device.
 		</div>
-	</div>-->
-	<!--<div class="mobile">-->
+	</div>
+	<div class="mobile">
 		<div class="sectionRow center">
 			<a style="width:190px;" class="button black" href="../profile.mobileconfig">Tap to register your device</a>
 		</div>
-	<!--</div>-->
+	</div>
 </div>
 
 <pre style="display:none;">

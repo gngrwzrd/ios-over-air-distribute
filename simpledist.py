@@ -47,6 +47,7 @@ def replace_args(args,others,content,outfile,urlencode=False):
 	if urlencode and getattr(args,"baseurl",None):
 		content = re.sub("{{encoded_baseurl}}",urllib.quote_plus(args.baseurl,''),content)
 		content = re.sub("{{encoded_install_baseurl}}",urllib.quote_plus(args.baseurl+'/install',''),content)
+		content = re.sub("{{encoded_install_secure_baseurl}}",urllib.quote_plus(args.secure_baseurl+'/install',''),content)
 	if urlencode and getattr(args,"secure_baseurl",None): content = re.sub("{{secure_baseurl}}",urllib.quote_plus(args.secure_baseurl,''),content)
 	if urlencode and getattr(args,"bundleid",None): content = re.sub("{{encoded_bundleid}}",urllib.quote_plus(args.bundleid,''),content)
 	if urlencode and getattr(args,"ipa",None): content = re.sub("{{encoded_ipa}}",urllib.quote_plus(args.ipa,''),content)

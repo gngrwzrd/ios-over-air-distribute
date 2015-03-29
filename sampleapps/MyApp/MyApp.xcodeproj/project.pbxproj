@@ -349,7 +349,7 @@
 				INFOPLIST_FILE = MyApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "782d87e9-d033-4573-bc9c-4a87aeca2bde";
+				PROVISIONING_PROFILE = "50F9F8F1-9CF1-418C-B596-DD2E2C840766";
 			};
 			name = Debug;
 		};
@@ -418,6 +418,7 @@
 				0739030B1ABF8B2C00556F71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0739030C1ABF8B2C00556F71 /* Build configuration list for PBXNativeTarget "MyAppTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +427,7 @@
 				0739030E1ABF8B2C00556F71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

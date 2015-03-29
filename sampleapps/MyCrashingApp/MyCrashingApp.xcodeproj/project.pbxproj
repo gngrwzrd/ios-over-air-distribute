@@ -7,17 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		072E30931AC7D13A00D0B41C /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072E30921AC7D13A00D0B41C /* CrashReporter.framework */; };
 		078507BE1AC73A1D009CE792 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 078507BD1AC73A1D009CE792 /* main.m */; };
 		078507C11AC73A1D009CE792 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 078507C01AC73A1D009CE792 /* AppDelegate.m */; };
 		078507C41AC73A1D009CE792 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 078507C31AC73A1D009CE792 /* ViewController.m */; };
 		078507C71AC73A1D009CE792 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 078507C51AC73A1D009CE792 /* Main.storyboard */; };
 		078507C91AC73A1D009CE792 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 078507C81AC73A1D009CE792 /* Images.xcassets */; };
 		078507CC1AC73A1D009CE792 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 078507CA1AC73A1D009CE792 /* LaunchScreen.xib */; };
+		07C71DC61AC88252000D612D /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C71DC51AC88252000D612D /* CrashReporter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		072E30921AC7D13A00D0B41C /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CrashReporter.framework; path = "libs/PLCrashReporter-1.2/iOS Framework/CrashReporter.framework"; sourceTree = SOURCE_ROOT; };
 		078507B81AC73A1D009CE792 /* MyCrashingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCrashingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		078507BC1AC73A1D009CE792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		078507BD1AC73A1D009CE792 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -28,6 +27,7 @@
 		078507C61AC73A1D009CE792 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		078507C81AC73A1D009CE792 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		078507CB1AC73A1D009CE792 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		07C71DC51AC88252000D612D /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CrashReporter.framework; path = "libs/PLCrashReporter-1.2/iOS Framework/CrashReporter.framework"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				072E30931AC7D13A00D0B41C /* CrashReporter.framework in Frameworks */,
+				07C71DC61AC88252000D612D /* CrashReporter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +76,7 @@
 		078507BB1AC73A1D009CE792 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				072E30921AC7D13A00D0B41C /* CrashReporter.framework */,
+				07C71DC51AC88252000D612D /* CrashReporter.framework */,
 				078507BC1AC73A1D009CE792 /* Info.plist */,
 				078507BD1AC73A1D009CE792 /* main.m */,
 			);
@@ -270,6 +270,8 @@
 					Framework,
 					"$(PROJECT_DIR)/libs/PLCrashReporter-1.2/iOS",
 					Framework,
+					"$(PROJECT_DIR)/libs/PLCrashReporter-1.2/iOS",
+					Framework,
 				);
 				INFOPLIST_FILE = MyCrashingApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -282,9 +284,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Apptitude LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Aaron Smith";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/libs/PLCrashReporter-1.2/iOS",
+					Framework,
 					"$(PROJECT_DIR)/libs/PLCrashReporter-1.2/iOS",
 					Framework,
 					"$(PROJECT_DIR)/libs/PLCrashReporter-1.2/iOS",
@@ -293,7 +297,7 @@
 				INFOPLIST_FILE = MyCrashingApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cb672a1d-41f0-49bc-8275-e7a91fd24244";
+				PROVISIONING_PROFILE = "c7d19a5d-9d9d-475a-9f34-e299b2c65723";
 			};
 			name = Release;
 		};
