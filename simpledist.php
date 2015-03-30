@@ -214,11 +214,10 @@ class SimpleDist {
 
 	function getBundleIdForApp($app) {
 		$path = $this->joinPaths(array($this->appsPath,$app,"bundleid.txt"));
-		$size = filesize($path);
-		$fhandle = fopen($path,"r");
-		$content = fread($fhandle,$size);
-		fclose($fhandle);
-		return $content;
+		if(file_exists($path)) {
+			return $this->readFileContent($path);
+		}
+		return "";
 	}
 
 	function hasIconForApp($app) {
@@ -273,17 +272,20 @@ class SimpleDist {
 		$size = filesize($devices);
 		$handle = fopen($devices,"r+");
 		$write = TRUE;
+		
 		while(($line=fgets($handle))) {
 			if(preg_match('/'.$device.'/',$line)) {
 				$write = FALSE;
 			}
 		}
 		
-		$line = $device . "\t" . $model . "\n";
 		if($write) {
+			$line = $device . "\t" . $model . "\n";
 			fseek($handle,$size);
 			fwrite($handle,$line);
 		}
+		
+		fclose($handle);
 	}
 
 	function saveCrashForApp($app,$data) {
