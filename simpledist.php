@@ -2,7 +2,6 @@
 
 session_start();
 date_default_timezone_set('America/Los_Angeles');
-
 require_once("assets/uuid.php");
 
 function sortcrashes($a, $b) {
@@ -11,24 +10,16 @@ function sortcrashes($a, $b) {
 
 class SimpleDist {
 	
-	var $baseURL;
-	var $secureBaseURL;
 	var $basePath;
 	var $appsPath;
 	var $assetsPath;
 	var $appsDirName;
-	var $usersDirName;
-	var $userJsonFileName;
 	var $devicesFileName;
 	var $noIconFileName;
 	var $iconFileName;
 
 	function __construct() {
-		$this->baseURL = "http://gngrwzrd.com/dist";
-		$this->secureBaseURL = "http://gngrwzrd.com/dist";
 		$this->appsDirName = "apps";
-		$this->usersDirName = "users";
-		$this->userJsonFileName = 'user.json';
 		$this->devicesFileName = "devices.txt";
 		$this->basePath = realpath(dirname(__FILE__));
 		$this->appsPath = $this->basePath . '/' . $this->appsDirName;
@@ -293,8 +284,6 @@ class SimpleDist {
 			fseek($handle,$size);
 			fwrite($handle,$line);
 		}
-		
-		return $this->joinPaths(array($this->baseURL,$this->appsDirName,$app,"registered"));
 	}
 
 	function saveCrashForApp($app,$data) {

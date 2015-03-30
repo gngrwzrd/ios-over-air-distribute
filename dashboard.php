@@ -48,7 +48,7 @@ $action = $helper->getActionFromURL("alist");
 					<a href="?a=vlist&app=<?php echo $app;?>"><?php echo $app;?></a>
 					<div class="sectionRowAppLinks">
 						<a class="alink" href="<?php echo $recruit ?>">Register</a>&nbsp;
-						<a class="alink" href="<?php echo $install ?>">Install</a>&nbsp;
+						<a class="alink" href="<?php echo $install ?>">Install Latest</a>&nbsp;
 						<a class="alink" href="<?php echo $devices ?>"><?php echo $deviceslabel; ?></a>&nbsp;
 						<a class="alink" href="<?php echo $crashes ?>"><?php echo $crashlabel; ?></a>
 					</div>
