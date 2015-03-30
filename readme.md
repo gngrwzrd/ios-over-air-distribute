@@ -121,6 +121,20 @@ You can accept crashes from plcrashreporter. Example:
 		return YES;
 	}
 
+## Symbolicate Crash ##
+
+Find the symbolicatecrash command like this:
+
+	find /Applications/Xcode.app -name symbolicatecrash -type f
+
+Export DEVELOPER_DIR:
+	
+	export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
+
+CD to the directory containing the command and run it:
+
+	cd /path/to/symbolicatecrash/
+	./symbolicatecrash /path/to/MyCrashLogFile.txt /path/to/my.dSYM
 
 ## Extra Information ##
 
