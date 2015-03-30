@@ -136,6 +136,8 @@ CD to the directory containing the command and run it:
 	cd /path/to/symbolicatecrash/
 	./symbolicatecrash /path/to/MyCrashLogFile.txt /path/to/my.dSYM
 
+The symbolicated crashlog is printed to stdout.
+
 ## Extra Information ##
 
 The profile delivery system is very picky. If you attempt to change anything in this script such as moving files into different directories, I can't guarantee it'll work.
